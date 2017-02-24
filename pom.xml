@@ -18,7 +18,6 @@
         <connection>scm:git:git@github.com:jquality/filler.git</connection>
         <developerConnection>scm:git:git@github.com:jquality/filler.git</developerConnection>
         <url>https://github.com/jquality/filler.git</url>
-      <tag>HEAD</tag>
   </scm>
 
     <distributionManagement>
