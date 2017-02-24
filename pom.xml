@@ -8,6 +8,28 @@
     <artifactId>test-datageneration</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/jquality/filler.git</url>
+        <connection>scm:git:https://github.com/jquality/filler.git</connection>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>owner</id>
+            <name>Renat Isin</name>
+            <email>newshriek@gmail.com</email>
+            <timezone>UTC+3</timezone>
+        </developer>
+    </developers>
+
     <dependencies>
         <dependency>
             <groupId>commons-lang</groupId>
