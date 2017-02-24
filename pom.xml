@@ -6,6 +6,10 @@
     <artifactId>filler</artifactId>
     <version>1.2-SNAPSHOT</version>
 
+    <name>filler</name>
+    <description>simple object generator</description>
+    <url>https://github.com/jquality/filler</url>
+
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
