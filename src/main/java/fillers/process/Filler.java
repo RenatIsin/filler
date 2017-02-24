@@ -8,11 +8,13 @@ import java.lang.reflect.ParameterizedType;
 
 /**
  * Created by r.isin on 21.02.2017.
+ *
+ * Class for annotation process
  */
-public class AnnotationProcessor<T>{
+public class Filler<T>{
     private Class<T> item;
 
-    public AnnotationProcessor(Class<T> item) {
+    public Filler(Class<T> item) {
         this.item = item;
     }
 
@@ -22,7 +24,7 @@ public class AnnotationProcessor<T>{
         for (Field field : fields) {
             if (field.isAnnotationPresent(Fill.class)) {
                 Fill item = field.getAnnotation(Fill.class);
-                field.setAccessible(true); // should work on private fields
+                field.setAccessible(true);
                 try {
                     Class c = item.filler();
                     Method m = c.getMethod(item.method());
