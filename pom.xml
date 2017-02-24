@@ -24,8 +24,8 @@
 
     <scm>
         <url>https://github.com/jquality/filler.git</url>
-        <connection>scm:git:https://github.com/jquality/filler.git</connection>
-        <developerConnection>scm:git:https://github.com/jquality/filler.git</developerConnection>
+        <connection>scm:git:ssh://git@github.com:jquality/filler.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:jquality/filler.git</developerConnection>
     </scm>
 
     <developers>
