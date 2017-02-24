@@ -4,7 +4,7 @@
 
     <groupId>com.github.jquality</groupId>
     <artifactId>filler</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
 
     <licenses>
         <license>
@@ -18,7 +18,7 @@
         <connection>scm:git:git@github.com:jquality/filler.git</connection>
         <developerConnection>scm:git:git@github.com:jquality/filler.git</developerConnection>
         <url>https://github.com/jquality/filler.git</url>
-      <tag>filler-1.1</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <distributionManagement>
