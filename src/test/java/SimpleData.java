@@ -13,8 +13,9 @@ public class SimpleData {
     @Fill(filler = StringFiller.class)
     private String name;
 
-    @Fill(filler = StringFiller.class, method = "test")
+    @Fill(filler = StringFiller.class, method = "random")
     private String last;
+
     Map<String, String> properties;
 
     @Fill(filler = TestStringConstantsFiller.class)

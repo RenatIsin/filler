@@ -1,7 +1,9 @@
 import fillers.process.Filler;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import java.util.List;
+
+import static org.testng.Assert.*;
 
 /**
  * Created by r.isin on 21.02.2017.
@@ -30,5 +32,23 @@ public class SimpleTests {
 
         assertEquals(testObject.getCustom(), SimpleDataFiller.custom);
         assertEquals(testObject.getDefaultData(), defaultObject);
+    }
+
+    @Test
+    public void twoInstances() throws InstantiationException, IllegalAccessException {
+        List<SimpleData> testObjects = new Filler<SimpleData>(SimpleData.class).getInstance(2);
+        assertNotEquals(testObjects.get(0), testObjects.get(1));
+    }
+
+    @Test
+    public void exception(){
+        Filler<NoDefaultConstructor> filler = new Filler<>(NoDefaultConstructor.class);
+        try {
+            filler.getInstance();
+            fail();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertNull(filler.single());
     }
 }

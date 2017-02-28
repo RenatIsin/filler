@@ -12,6 +12,10 @@ public class SimpleDataFiller implements BaseFiller<SimpleData> {
         return new SimpleData(1, "test", "last");
     }
 
+    public String getNumeric(){
+        return RandomStringUtils.randomNumeric(10);
+    }
+
     public SimpleData customFiller() {
         custom = new SimpleData(56, RandomStringUtils.randomAlphabetic(10), RandomStringUtils.randomAlphanumeric(3));
         return custom;
