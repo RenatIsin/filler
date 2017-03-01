@@ -36,6 +36,19 @@ public class SimpleData {
     @Fill(filler = TestStringConstantsFiller.class, method = "emptyString")
     private String emptyString;
 
+    public final static String lengthParam = "4";
+
+    @Fill(filler = TestStringConstantsFiller.class, method = "parametrized", params = lengthParam)
+    private String parametrized;
+
+    public final static String type = "Numeric";
+
+    @Fill(filler = TestStringConstantsFiller.class, method = "countAndNumeric", params = {lengthParam, type})
+    private String countAndNumeric;
+
+    @Fill(filler = TestStringConstantsFiller.class, method = "countAndNumeric", params = {lengthParam, "asd"})
+    private String countAndNotNumeric;
+
     public SimpleData(){}
 
     public SimpleData(int id, String name, String last) {
@@ -82,6 +95,18 @@ public class SimpleData {
 
     public String getEmptyString() {
         return emptyString;
+    }
+
+    public String getParametrized() {
+        return parametrized;
+    }
+
+    public String getCountAndNumeric() {
+        return countAndNumeric;
+    }
+
+    public String getCountAndNotNumeric() {
+        return countAndNotNumeric;
     }
 
     @Override

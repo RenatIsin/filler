@@ -1,4 +1,5 @@
 import fillers.BaseFiller;
+import org.apache.commons.lang.RandomStringUtils;
 
 /**
  * Created by r.isin on 21.02.2017.
@@ -27,5 +28,21 @@ public class TestStringConstantsFiller implements BaseFiller<String> {
 
     public String emptyString(){
         return "";
+    }
+
+    public String parametrized(String count){
+        return RandomStringUtils.random(Integer.parseInt(count));
+    }
+
+    public String countAndNumeric(String count, String type){
+        if(type.equals("Numeric")) {
+            return RandomStringUtils.randomNumeric(Integer.parseInt(count));
+        } else {
+            return RandomStringUtils.randomAlphabetic(Integer.parseInt(count));
+        }
+    }
+
+    public String parametrizedIncorrectType(Integer count){
+        return RandomStringUtils.random(count);
     }
 }

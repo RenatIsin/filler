@@ -17,4 +17,5 @@ import java.lang.annotation.Target;
 public @interface Fill {
     Class<? extends BaseFiller> filler();
     String method() default "defaultFiller";
+    String [] params() default {};
 }
