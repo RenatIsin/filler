@@ -3,6 +3,7 @@ import org.apache.commons.lang.StringUtils;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collections;
 import java.util.List;
 
 import static org.testng.Assert.*;
@@ -66,6 +67,7 @@ public class SimpleTests {
             e.printStackTrace();
         }
         assertNull(noDefaultConstructorFiller.single());
+        assertEquals(noDefaultConstructorFiller.items(2), Collections.EMPTY_LIST);
 
         Filler<IncorrectType> incorrectTypeFiller = Filler.of(IncorrectType.class);
         try {
@@ -75,5 +77,16 @@ public class SimpleTests {
             e.printStackTrace();
         }
         assertNull(incorrectTypeFiller.single());
+        assertEquals(incorrectTypeFiller.items(5), Collections.EMPTY_LIST);
+
+        Filler<IncorrectParamsCount> incorrectParamsCount = Filler.of(IncorrectParamsCount.class);
+        try {
+            incorrectParamsCount.getInstance();
+            fail();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertNull(incorrectParamsCount.single());
+        assertEquals(incorrectParamsCount.items(33), Collections.EMPTY_LIST);
     }
 }

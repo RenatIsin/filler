@@ -31,8 +31,8 @@ public class Filler<T>{
     /**
      *
      * @return Single filled object of Class<T>
-     * @throws IllegalAccessException
-     * @throws InstantiationException
+     * @throws IllegalAccessException when class not accessible
+     * @throws InstantiationException when class doesn't have default constructor
      */
     public T getInstance() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         return getInstance(1).get(0);
@@ -42,12 +42,12 @@ public class Filler<T>{
      *
      * @param count items of filled objects
      * @return List<Class<T>> with count of elements
-     * @throws IllegalAccessException
-     * @throws InstantiationException
+     * @throws IllegalAccessException when class not accessible
+     * @throws InstantiationException when class doesn't have default constructor
      */
     public List<T> getInstance(int count) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         final List<T> ret = new ArrayList<T>(count);
-        Object instance;
+        T instance;
         for (int i = 0; i < count; i++) {
             instance = item.newInstance();
             List<Field> fields = Arrays.asList(instance.getClass().getDeclaredFields());
@@ -56,7 +56,7 @@ public class Filler<T>{
                 field.setAccessible(true);
                 setValue(instance, field);
             }
-            ret.add((T) instance);
+            ret.add(instance);
         }
         return ret;
     }
@@ -74,11 +74,8 @@ public class Filler<T>{
                                         .collect(Collectors.joining(", ")) + ")"
                         )
                 );
-        if(item.params().length == 0) {
-            field.set(instance, m.invoke(c.newInstance()));
-        } else {
-            field.set(instance, m.invoke(c.newInstance(), item.params()));
-        }
+
+        field.set(instance, m.invoke(c.newInstance(), (Object[]) item.params()));
     }
 
     /**
@@ -93,7 +90,7 @@ public class Filler<T>{
 
     /**
      *
-     * @param count
+     * @param count items of filled objects
      * @return List<Class<T>> with count of elements
      */
     public List<T> items(int count) {
