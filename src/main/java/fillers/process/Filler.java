@@ -20,7 +20,11 @@ import java.util.stream.Collectors;
 public class Filler<T>{
     private Class<T> item;
 
-    public Filler(Class<T> item) {
+    public static <T> Filler<T> of(Class<T> type){
+        return new Filler<T>(type);
+    }
+
+    private Filler(Class<T> item) {
         this.item = item;
     }
 
