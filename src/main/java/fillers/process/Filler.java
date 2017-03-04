@@ -29,9 +29,11 @@ public class Filler<T>{
 
     /**
      *
-     * @return Single filled object of Class<T>
+     * @return Single filled object of Class T
      * @throws IllegalAccessException when class not accessible
      * @throws InstantiationException when class doesn't have default constructor
+     * @throws NoSuchMethodException when filler class doesn't have default method marked in annotation
+     * @throws InvocationTargetException when filler method invocation not possible
      */
     public T single() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         return items(1).get(0);
@@ -40,9 +42,11 @@ public class Filler<T>{
     /**
      *
      * @param count single of filled objects
-     * @return List<Class<T>> with count of elements
+     * @return List with count of elements
      * @throws IllegalAccessException when class not accessible
      * @throws InstantiationException when class doesn't have default constructor
+     * @throws NoSuchMethodException when filler class doesn't have default method marked in annotation
+     * @throws InvocationTargetException when filler method invocation not possible
      */
     public List<T> items(int count) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         final List<T> ret = new ArrayList<T>(count);
