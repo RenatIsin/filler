@@ -4,7 +4,7 @@
 
     <groupId>com.github.jquality</groupId>
     <artifactId>filler</artifactId>
-    <version>2.0</version>
+    <version>2.1.1-SNAPSHOT</version>
 
     <name>filler</name>
     <description>simple object generator</description>
@@ -22,7 +22,7 @@
         <connection>scm:git:git@github.com:jquality/filler.git</connection>
         <developerConnection>scm:git:git@github.com:jquality/filler.git</developerConnection>
         <url>https://github.com/jquality/filler.git</url>
-      <tag>filler-2.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <distributionManagement>
