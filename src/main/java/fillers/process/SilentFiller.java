@@ -8,10 +8,20 @@ import java.util.List;
  * Created by r.isin on 21.02.2017.
  *
  * Wrapper for Filler class, with wrapped exceptions
+ *
+ * @author MiF
+ * @version $Id: $Id
  */
 public class SilentFiller<T>{
     private Filler<T> base;
 
+    /**
+     * <p>of.</p>
+     *
+     * @param type a {@link java.lang.Class} object.
+     * @param <T> a T object.
+     * @return a {@link fillers.process.SilentFiller} object.
+     */
     public static <T> SilentFiller<T> of(Class<T> type){
         return new SilentFiller<T>(type);
     }
@@ -22,7 +32,8 @@ public class SilentFiller<T>{
 
     /**
      * wrapper for single with default exception handling
-     * @return Single filled object of Class<T>
+     *
+     * @return Single filled object
      */
     public T single() {
         List<T> items = items(1);
@@ -31,9 +42,10 @@ public class SilentFiller<T>{
 
 
     /**
+     * <p>items.</p>
      *
      * @param count single of filled objects
-     * @return List<Class<T>> with count of elements
+     * @return List with count of elements
      */
     public List<T> items(int count) {
         try {

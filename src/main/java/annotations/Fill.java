@@ -11,6 +11,9 @@ import java.lang.annotation.Target;
  * Created by r.isin on 21.02.2017.
  *
  * Annotation for mark the specified field, and chose class and method for fill value
+ *
+ * @author MiF
+ * @version $Id: $Id
  */
 @Target(value= ElementType.FIELD)
 @Retention(value= RetentionPolicy.RUNTIME)

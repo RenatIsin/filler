@@ -15,10 +15,20 @@ import java.util.stream.Collectors;
  * Created by r.isin on 21.02.2017.
  *
  * Class for annotation process
+ *
+ * @author MiF
+ * @version $Id: $Id
  */
 public class Filler<T>{
     private Class<T> item;
 
+    /**
+     * <p>of.</p>
+     *
+     * @param type a {@link java.lang.Class} object.
+     * @param <T> a T object.
+     * @return a {@link fillers.process.Filler} object.
+     */
     public static <T> Filler<T> of(Class<T> type){
         return new Filler<T>(type);
     }
@@ -28,25 +38,27 @@ public class Filler<T>{
     }
 
     /**
+     * <p>single.</p>
      *
      * @return Single filled object of Class T
-     * @throws IllegalAccessException when class not accessible
-     * @throws InstantiationException when class doesn't have default constructor
-     * @throws NoSuchMethodException when filler class doesn't have default method marked in annotation
-     * @throws InvocationTargetException when filler method invocation not possible
+     * @throws java.lang.IllegalAccessException when class not accessible
+     * @throws java.lang.InstantiationException when class doesn't have default constructor
+     * @throws java.lang.NoSuchMethodException when filler class doesn't have default method marked in annotation
+     * @throws java.lang.reflect.InvocationTargetException when filler method invocation not possible
      */
     public T single() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         return items(1).get(0);
     }
 
     /**
+     * <p>items.</p>
      *
      * @param count single of filled objects
      * @return List with count of elements
-     * @throws IllegalAccessException when class not accessible
-     * @throws InstantiationException when class doesn't have default constructor
-     * @throws NoSuchMethodException when filler class doesn't have default method marked in annotation
-     * @throws InvocationTargetException when filler method invocation not possible
+     * @throws java.lang.IllegalAccessException when class not accessible
+     * @throws java.lang.InstantiationException when class doesn't have default constructor
+     * @throws java.lang.NoSuchMethodException when filler class doesn't have default method marked in annotation
+     * @throws java.lang.reflect.InvocationTargetException when filler method invocation not possible
      */
     public List<T> items(int count) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         final List<T> ret = new ArrayList<T>(count);
