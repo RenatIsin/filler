@@ -8,7 +8,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,18 +33,18 @@ public class Filler<T>{
      * @throws IllegalAccessException when class not accessible
      * @throws InstantiationException when class doesn't have default constructor
      */
-    public T getInstance() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
-        return getInstance(1).get(0);
+    public T single() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+        return items(1).get(0);
     }
 
     /**
      *
-     * @param count items of filled objects
+     * @param count single of filled objects
      * @return List<Class<T>> with count of elements
      * @throws IllegalAccessException when class not accessible
      * @throws InstantiationException when class doesn't have default constructor
      */
-    public List<T> getInstance(int count) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+    public List<T> items(int count) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         final List<T> ret = new ArrayList<T>(count);
         T instance;
         for (int i = 0; i < count; i++) {
@@ -77,30 +76,5 @@ public class Filler<T>{
 
         field.set(instance, m.invoke(c.newInstance(), (Object[]) item.params()));
     }
-
-    /**
-     * wrapper for getInstance with default exception handling
-     * @return Single filled object of Class<T>
-     */
-    public T single() {
-        List<T> items = items(1);
-        return items.size() == 0 ? null : items.get(0);
-    }
-
-
-    /**
-     *
-     * @param count items of filled objects
-     * @return List<Class<T>> with count of elements
-     */
-    public List<T> items(int count) {
-        try {
-            return getInstance(count);
-        } catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException | IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-        return Collections.emptyList();
-    }
-
 
 }
